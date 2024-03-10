@@ -1,56 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
-    <div class="main w-full h-[100vh] flex items-center justify-center bg-black">
+    <div class="main w-full h-[100vh] flex flex-col items-center justify-center bg-black">
         <div class="flex h-[80%] w-[80%]">
-            <div class="image bg-zinc-800 w-full h-full"></div>
+            <div class="image bg-zinc-800 w-full h-full bg-[url('https://images.unsplash.com/photo-1707343848723-bd87dea7b118?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center"></div>
             <div class="content bg-zinc-900 w-full h-full  overflow-y-auto">
-                <h2 class="text-white sticky pl-10 pt-9 top-0 bg-zinc-900 w-full h-[100px]  text-4xl font-medium">All Songs....</h2>
-           <div class="songs_container px-10">
-            <div class="songs m-auto flex justify-between items-center cursor-pointer pt-4 pb-4 hover:bg-zinc-800 px-4  mt-8 border-t-zinc-700 border-t-2">
-                <div class="flex items-center gap-7">
-                 <img class="w-[55px] h-[55px] rounded-sm" src="https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3-ap-south-1.amazonaws.com/wynk-music-cms/srch_sonymusic/music/srch_sonymusic_A10328E00055741006.jpg" alt="">
-                 <h2 class="text-white">Cheri Cheri Lady</h2>
+                <h2 class="text-white sticky pl-10 pt-9 top-0 bg-zinc-900 w-full h-[100px]  text-4xl font-medium">All
+                    Songs....</h2>
+                <div class="songs_container px-10 mt-8">
                 </div>
-                 <h4 class="text-white">3:45</h4>
-             </div>
-             <div class="songs m-auto flex justify-between items-center cursor-pointer pt-4 pb-4 hover:bg-zinc-800 px-4  border-t-zinc-700 border-t-2">
-                 <div class="flex items-center gap-7">
-                  <img class="w-[55px] h-[55px] rounded-sm" src="https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3-ap-south-1.amazonaws.com/wynk-music-cms/srch_sonymusic/music/srch_sonymusic_A10328E00055741006.jpg" alt="">
-                  <h2 class="text-white">Cheri Cheri Lady</h2>
-                 </div>
-                  <h4 class="text-white">3:45</h4>
-              </div>
-              <div class="songs m-auto flex justify-between items-center cursor-pointer pt-4 pb-4 hover:bg-zinc-800 px-4  border-t-zinc-700 border-t-2">
-                 <div class="flex items-center gap-7">
-                  <img class="w-[55px] h-[55px] rounded-sm" src="https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3-ap-south-1.amazonaws.com/wynk-music-cms/srch_sonymusic/music/srch_sonymusic_A10328E00055741006.jpg" alt="">
-                  <h2 class="text-white">Cheri Cheri Lady</h2>
-                 </div>
-                  <h4 class="text-white">3:45</h4>
-              </div>
-              <div class="songs m-auto flex justify-between items-center cursor-pointer pt-4 pb-4 hover:bg-zinc-800 px-4  border-t-zinc-700 border-t-2">
-                <div class="flex items-center gap-7">
-                 <img class="w-[55px] h-[55px] rounded-sm" src="https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3-ap-south-1.amazonaws.com/wynk-music-cms/srch_sonymusic/music/srch_sonymusic_A10328E00055741006.jpg" alt="">
-                 <h2 class="text-white">Cheri Cheri Lady</h2>
-                </div>
-                 <h4 class="text-white">3:45</h4>
-             </div>
- 
-           </div>
-        
             </div>
         </div>
-        <div class="function">
+        <div class="function w-[80%]  mt-3">
+            <div class="radio">
+                <input class="w-full h-[2px]" type="range" min="0" value="0" max="100">
+            </div>
+            <div class="function_bt  w-full flex gap-3 justify-center">
+                <h3 class="text-white text-3xl active:scale-105"><i class="ri-skip-back-mini-fill cursor-pointer"></i>
+                </h3>
+                <h3 class="text-white text-3xl active:scale-105"><i id="btn" onclick="myfunction(this)"
+                        class="ri-play-mini-fill cursor-pointer"></i> </h3>
+                <h3 class="text-white text-3xl active:scale-105"><i
+                        class="ri-skip-forward-mini-fill cursor-pointer"></i></h3>
+            </div>
 
         </div>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
