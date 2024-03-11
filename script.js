@@ -1,5 +1,4 @@
 
-
   var songsData = [
     {
       title: "Death Bed",
@@ -50,9 +49,12 @@
   var selectedSong = 0;
   var clutter = '';
   var sliderChange = document.querySelector("#TimeRange");
-  var btn = document.getElementById("btn")
+  var btn = document.getElementById("btn");
+  var mute = document.getElementById("mute");
+  var volum = document.getElementById("volum")
   var one = 0; 
-  
+  var two = 0;
+ 
 // var urlArray = songsData.map(song => song.url);
 // var songsDurations = [];
 // var clutterrr = ``;
@@ -82,7 +84,7 @@
     
     
      clutter += `<div  id=${index}
-     class="songs m-auto flex justify-between items-center cursor-pointer pt-2 pb-2 hover:bg-zinc-800 px-4   border-t-zinc-700 border-t-2">
+     class=" bwww songs m-auto flex justify-between items-center cursor-pointer pt-2 pb-2 hover:bg-zinc-800 px-4   border-t-zinc-700 border-t-2">
      <div class="flex items-center gap-7">
          <img class="w-[50px] h-[50px] rounded-sm"
              src="${data.artwork}"
@@ -107,8 +109,18 @@
   // formatDuration()
   
   songs_container.addEventListener("click", (dets)=> {
-    previousSliderValue = sliderChange.value;
     var audiofile = songsData[dets.target.id].url;
+    
+    var allActiveElements = document.getElementsByClassName("bwww");
+    for (let i = 0; i < allActiveElements.length; i++) {
+      allActiveElements[i].classList.remove("active");
+    }
+  
+    
+    dets.target.classList.add("active");
+  
+  
+   
     audio.src = audiofile;
     audio.play();
     document.querySelector(".image").style.backgroundImage = `url(${songsData[dets.target.id].artwork})`;
@@ -160,8 +172,44 @@ else{
 }
 })
 
+mute.addEventListener("click", ()=>{
+if(two == 0){
+  mute.innerHTML = '<i class="ri-volume-mute-line"></i>';
+ 
+  two = 1;
+  audio.muted = true
+}
+else{
+  mute.innerHTML = '<i class="ri-volume-up-line">';
+  two = 0;
+  audio.muted = false
+  
+}
+})
 
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+audio.volume = 30 / 100;
 
+volum.addEventListener("change", ()=>{
+  audio.volume = volum.value /100;
+  
+
+  
+ if(volum.value == "0" ){
+  mute.innerHTML = '<i class="ri-volume-mute-line"></i>';
+  two = 1;
+  audio.muted = true
+ }
+ else{
+  mute.innerHTML = '<i class="ri-volume-up-line">';
+  two = 0;
+  audio.muted = false
+ }
+
+ });
+
+
+ });
