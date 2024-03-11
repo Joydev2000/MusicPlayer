@@ -22,3 +22,8 @@
   ::-webkit-scrollbar-thumb:hover {
 	background: #b30000; 
   }
+  @media screen and (max-width:700px) {
+    .maine{
+      flex-direction: column;
+    }
+  }
