@@ -23,17 +23,20 @@
         </div>
         <div class="function w-[80%]  mt-3">
             <div class="radio">
-                <input class="w-full h-[2px]" type="range" min="0" value="0" max="100">
+                <div class="flex justify-between">
+                    <h2 class="curentTime text-white text-xl">0:00</h2>
+                    <h2 class="duratio text-white text-xl">0:00</h2>
+                </div>
+                <input id="TimeRange" class="w-full h-[2px] cursor-pointer" type="range" min="0" value="0" max="100" step="1">
             </div>
             <div class="function_bt  w-full flex gap-3 justify-center">
                 <h3 class="text-white text-3xl active:scale-105"><i class="ri-skip-back-mini-fill cursor-pointer"></i>
                 </h3>
-                <h3 class="text-white text-3xl active:scale-105"><i id="btn" onclick="myfunction(this)"
-                        class="ri-play-mini-fill cursor-pointer"></i> </h3>
+                <h3 id="btn" class="text-white text-3xl active:scale-105 cursor-pointer"><i 
+                        class="ri-play-mini-fill "></i> </h3>
                 <h3 class="text-white text-3xl active:scale-105"><i
                         class="ri-skip-forward-mini-fill cursor-pointer"></i></h3>
             </div>
-
         </div>
     </div>
     <script src="script.js"></script>
