@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-    /* display: none; */
+    display: none;
 	width: 6px;
     height: 2px;
   }
@@ -26,7 +26,16 @@
     .maine{
       flex-direction: column;
     }
+    .function_bt{
+      justify-content: flex-start !important;
+    }
+    .maine{
+      width: 90% !important;
+    }
+    .function{
+      width: 90% !important;
+    }
   }
   .active{
-    background-color: rgb(255, 0, 0);
+    background-color: #27272a;
   }

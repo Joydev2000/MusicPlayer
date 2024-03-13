@@ -46,14 +46,15 @@
 
   var songs_container = document.querySelector(".songs_container");
   var audio = new Audio();
-  var selectedSong = 0;
-  var clutter = '';
+  var audiofile = 0;
   var sliderChange = document.querySelector("#TimeRange");
   var btn = document.getElementById("btn");
   var mute = document.getElementById("mute");
   var volum = document.getElementById("volum")
   var one = 0; 
   var two = 0;
+  var forward = document.querySelector(".next")
+  var backward = document.querySelector(".back")
  
 // var urlArray = songsData.map(song => song.url);
 // var songsDurations = [];
@@ -80,24 +81,28 @@
 
 
   function songsDataStore(){
+    var clutter = '';
+
    songsData.forEach(function(data, index){
-    
-    
      clutter += `<div  id=${index}
      class=" bwww songs m-auto flex justify-between items-center cursor-pointer pt-2 pb-2 hover:bg-zinc-800 px-4   border-t-zinc-700 border-t-2">
-     <div class="flex items-center gap-7">
+     <div  class="  flex items-center gap-7">
          <img class="w-[50px] h-[50px] rounded-sm"
              src="${data.artwork}"
              alt="">
-         <h2 class="text-white newww">${data.title}</h2>
+         <h2 class="text-white pointer-events-none  ">${data.title}</h2>
      </div>
-     <h4 class="text-white newwwww"></h4>
+     <h4 class="text-white "></h4>
  </div>`;
 
- songs_container.innerHTML = clutter;
+
  
    });
 
+   songs_container.innerHTML = clutter;
+   audio.src = songsData[audiofile].url;
+   document.querySelector(".image").style.backgroundImage = `url(${songsData[audiofile].artwork})`;
+   
   };
   songsDataStore();
 
@@ -109,23 +114,22 @@
   // formatDuration()
   
   songs_container.addEventListener("click", (dets)=> {
-    var audiofile = songsData[dets.target.id].url;
+
+    audiofile = dets.target.id;
+    songsDataStore();
+
     
-    var allActiveElements = document.getElementsByClassName("bwww");
-    for (let i = 0; i < allActiveElements.length; i++) {
-      allActiveElements[i].classList.remove("active");
-    }
+    // var allActiveElements = document.getElementsByClassName("bwww");
+    // for (let i = 0; i < allActiveElements.length; i++) {
+    //   allActiveElements[i].classList.remove("active");
+    // }
+    // dets.target.classList.add("active");
+  // console.log(dets.target.closest);
   
     
-    dets.target.classList.add("active");
-  
-  
-   
-    audio.src = audiofile;
-    audio.play();
-    document.querySelector(".image").style.backgroundImage = `url(${songsData[dets.target.id].artwork})`;
     btn.innerHTML = '<i class="ri-pause-mini-fill"></i>';
     one = 2;
+    audio.play();
     
   });
 
@@ -162,13 +166,17 @@ audio.addEventListener("timeupdate", () => {
 btn.addEventListener("click", () =>{
 if(one == 0){
   btn.innerHTML = '<i class="ri-pause-mini-fill"></i>';
+ 
   one = 2;
   audio.play();
+ 
 }
 else{
   btn.innerHTML = '<i class="ri-play-mini-fill cursor-pointer"></i>';
   one = 0; 
   audio.pause();
+ 
+ 
 }
 })
 
@@ -213,3 +221,36 @@ volum.addEventListener("change", ()=>{
 
 
  });
+
+
+
+
+ forward.addEventListener("click", function () {
+  
+  if (audiofile < songsData.length -1 ) {
+      audiofile++
+      songsDataStore()
+      audio.play()
+      backward.style.opacity = 1
+      btn.innerHTML = '<i class="ri-pause-mini-fill"></i>';
+      one = 2;
+      
+  }else{
+      forward.style.opacity = 0.4
+      
+  }
+})
+backward.addEventListener("click", function () {
+  if (audiofile > 0) {
+      audiofile--
+      songsDataStore()
+      audio.play()
+      forward.style.opacity = 1
+      btn.innerHTML = '<i class="ri-pause-mini-fill"></i>';
+      one = 2;
+  }else{
+      backward.style.opacity = 0.4
+  }
+})
+
+
